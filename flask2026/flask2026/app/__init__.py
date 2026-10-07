@@ -32,13 +32,10 @@ def create_app():
     # ВАЖНО: импортируем модели,
     # чтобы Alembic их увидел
     from app import models
-
-    from app.api.employees.routes import employees_bp
-    from app.api.vacations.routes import vacations_bp
+    
+    from app.api.books.routes import books_bp
+    app.register_blueprint(books_bp)
 
     swagger = Swagger(app)
-
-    app.register_blueprint(employees_bp)
-    app.register_blueprint(vacations_bp)
 
     return app
